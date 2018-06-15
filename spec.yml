@@ -1,11 +1,10 @@
 openapi: "3.0.0"
 info:
-  description: "This is the API definition for the Datenkrake frontend."
+  description: "This is the API definition for the mailsaviour service."
   version: "1.0.0"
-  title: "Datenkrake Backend"
+  title: "Mailsaviour"
   contact:
     email: "leonard@marschke.me"
-    url: "https://bauth.marschke.me/about"
 servers:
   - url: "https://someserver/v1"
 
