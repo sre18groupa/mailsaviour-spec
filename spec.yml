@@ -43,32 +43,29 @@ paths:
           in: query
           description: Filter for received date
           schema:
-            type: string
-            format: datetime
-            description: Time in ISO 8601 format
-            example: "2007-08-31T16:47+00:00"
+            $ref: '#/components/schemas/Mail/properties/received'
         - name: received_after
           in: query
           description: Filter for received date
           schema:
-            type: string
-            format: datetime
-            description: Time in ISO 8601 format
-            example: "2007-08-31T16:47+00:00"
+            $ref: '#/components/schemas/Mail/properties/received'
         - name: mail_from
           in: query
           description: Filter for mail sender
           schema:
-            type: string
-            format: mail
-            description: Mail sender address
+            $ref: '#/components/schemas/Mail/properties/mail_from'
         - name: rcpt_to
           in: query
           description: Filter for mail receipient
           schema:
-            type: string
-            format: mail
-            description: Mail rcpt address
+            $ref: '#/components/schemas/Mail/properties/rcpt_to/items'
+        - name: limit
+          in: query
+          description: Limits the response size
+          schema:
+            type: integer
+            minimum: 1
+            description: Maximal number of mails
       responses:
         200:
           description: Mail content
@@ -170,7 +167,8 @@ components:
             example: leonard@localhost
         data:
           type: string
-          description: Mail content encoded in ASCII chars
+          maxLength: 20971520
+          description: Mail content encoded in ASCII chars, max 20 MiB
           example: "SRE ist das geilste Seminar ewa!!!"
     MailId:
       type: string
