@@ -65,7 +65,16 @@ paths:
           schema:
             type: integer
             minimum: 1
+            default: 1024
             description: Maximal number of mails
+        - name: offset
+          in: query
+          description: Skips the beginning of the sorted response
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+            description: Number of mails to skip
       responses:
         200:
           description: Mail content
@@ -76,6 +85,7 @@ paths:
                 properties:
                   mail_list:
                     type: array
+                    description: Sorted by received (primary) and id (secondary)
                     items:
                       type: object
                       properties:
